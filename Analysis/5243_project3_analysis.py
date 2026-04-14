@@ -26,10 +26,10 @@ def clean_time_entry(value, small_threshold_minutes=15):
     """
     Convert the raw time entry into seconds.
 
-    Rules:
+    Our methodology: 
     1. If the entry explicitly contains 'minute' or 'min', convert to seconds.
     2. If it explicitly contains 'second' or 'sec', keep as seconds.
-    3. If it is a very small pure number (<= 15), assume the participant likely entered minutes,
+    3. If it is a very small number (<= 15), assume the participant likely entered minutes by mistake,
        because the survey asked for seconds and such tiny values are suspicious.
     4. Otherwise keep the numeric value as seconds.
 
@@ -108,7 +108,7 @@ def run_continuous_test(df, variable_name):
     a = df.loc[df['version'] == 'A', variable_name].dropna()
     b = df.loc[df['version'] == 'B', variable_name].dropna()
 
-    # Welch's t-test (safe when variances may differ)
+    # Welch's t-test (we can apply this since we suspect variances may differ)
     t_res = stats.ttest_ind(a, b, equal_var=False)
 
     # Mann-Whitney U as a nonparametric robustness check
@@ -167,7 +167,7 @@ def main():
     df_b = load_and_clean(FILE_B, 'B')
     df = pd.concat([df_a, df_b], ignore_index=True)
 
-    # Save cleaned dataset for transparency / reproducibility
+    # Save cleaned dataset 
     df.to_csv('cleaned_ab_test_data.csv', index=False)
 
     # Export suspicious records for manual review
@@ -216,7 +216,7 @@ def main():
     pd.DataFrame([completion_test]).to_csv('completion_test_results.csv', index=False)
     completion_table.to_csv('completion_contingency_table.csv')
 
-    # Optional composite satisfaction/usability score
+    # Composite satisfaction/usability score
     df['usability_index'] = df[['ease_of_use', 'clarity', 'guidance_felt']].mean(axis=1)
     usability_res = run_continuous_test(df, 'usability_index')
     print('\n=========================')
