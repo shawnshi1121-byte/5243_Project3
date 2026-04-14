@@ -1,0 +1,2 @@
+variable,mean_A,mean_B,median_A,median_B,welch_t_stat,welch_p_value,mannwhitney_u,mannwhitney_p_value,cohens_d_B_minus_A
+usability_index,4.514285714285715,5.942857142857143,4.333333333333333,6.0,-5.997460436785145,1.0790536819039091e-07,192.5,7.197204772246536e-07,1.4336672594793505
