@@ -99,3 +99,10 @@ This repository contains:
 * analysis comparing control vs treatment
 
 **Goal:** determine whether guided instructions improve user outcomes in a data analysis interface.
+
+## Team Members 
+
+* Wentao Zhong (wz2753)
+* Nikhil Shanbhag (nvs2128)
+* Zhanhang Shi (zs2741)
+* Xiying Chen (xc2781)
