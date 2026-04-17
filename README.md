@@ -1,90 +1,101 @@
 # Applied Data Science Project 3: Experimentation 
 
-\section*{Project Overview}
+## Overview
 
-This project evaluates how \textbf{instructional design affects user performance and experience} in a data analysis web application through an A/B test.
+This project evaluates how **instructional text affects user performance and experience** in a data analysis web application.
 
-\textbf{Research Question:}  
-\emph{Does clearer, more guided instructional text improve task completion, efficiency, and user experience in a data analysis app?}
+**Research Question:**
+*Does clearer, more guided instructional text improve task completion, efficiency, and user experience?*
 
-We compare two versions of the same Shiny app:
-\begin{itemize}
-    \item \textbf{Version A (Control):} minimal instructions
-    \item \textbf{Version B (Treatment):} more guided instructional text and terminology
-\end{itemize}
+We compare:
 
-\section*{Repository Structure}
+* **Version A (Control):** minimal instructions
+* **Version B (Treatment):** more guided instructional text
 
-\begin{verbatim}
+---
+
+## Repository Structure
+
+```
 .
 ├── Analysis/
 │   ├── project3_analysis.py
-│   └── (figures and result visuals)
+│   └── (figures and results)
 ├── App_Versions/
-│   ├── app_simple_matched.py   # Version A: Control
-│   └── core.py                 # Version B: Treatment
+│   ├── app_simple_matched.py   # Control (A)
+│   └── core.py                 # Treatment (B)
 ├── Data/
-│   ├── (control CSV files)
-│   └── (treatment CSV files)
+│   ├── control.csv
+│   └── treatment.csv
 ├── logs/
 ├── README.md
 ├── requirements.txt
 └── Project 3.pdf
-\end{verbatim}
+```
 
-\begin{itemize}
-    \item \texttt{Analysis/}: main A/B test analysis code and figures summarizing results
-    \item \texttt{App\_Versions/}: both app versions used in the experiment
-    \item \texttt{Data/}: CSV files collected from Google Forms for both versions
-\end{itemize}
+* **Analysis/** → A/B test code and visual results
+* **App_Versions/** → both app versions
+* **Data/** → Google Form response data
 
-\section*{Collected Data}
+---
 
-User responses were collected through Google Forms after interacting with one version of the app. The main variables are:
+## Data Collected
 
-\begin{itemize}
-    \item \textbf{Approximate Time Spent in Seconds}  
-    (\emph{Note: 1 minute = 60 seconds})
-    \item \textbf{Ease of Use}  
-    \((1=\text{Difficult},\ 7=\text{Easy})\)
-    \item \textbf{Clarity}  
-    \((1=\text{Unclear},\ 7=\text{Clear})\)
-    \item \textbf{Guidance Felt}  
-    \((1=\text{None},\ 7=\text{High})\)
-    \item \textbf{Level of Completion}  
-    \((0=\text{No Progress},\ 1=\text{Explored Data},\ 2=\text{Generated a Chart or Visual})\)
-\end{itemize}
+After using the app, users reported:
 
-These variables are used to measure:
-\begin{itemize}
-    \item task completion,
-    \item engagement,
-    \item efficiency,
-    \item and perceived usability/clarity.
-\end{itemize}
+* **Time (seconds)** *(1 min = 60 sec)*
+* **Ease** *(1 = Difficult, 7 = Easy)*
+* **Clarity** *(1 = Unclear, 7 = Clear)*
+* **Guidance** *(1 = None, 7 = High)*
+* **Completion Level**
 
-\section*{How to Run}
+  * 0 = No Progress
+  * 1 = Explored Data
+  * 2 = Generated Chart
 
-\textbf{Install dependencies:}
-\begin{verbatim}
+These capture:
+
+* task completion
+* engagement
+* efficiency
+* usability
+
+---
+
+## How to Run
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
-\end{verbatim}
+```
 
-\textbf{Run Version A (Control):}
-\begin{verbatim}
+### Run Control (Version A)
+
+```bash
 python -m shiny run App_Versions/app_simple_matched.py
-\end{verbatim}
+```
 
-\textbf{Run Version B (Treatment):}
-\begin{verbatim}
+### Run Treatment (Version B)
+
+```bash
 python -m shiny run App_Versions/core.py
-\end{verbatim}
+```
 
-\textbf{Run the analysis:}
-\begin{verbatim}
+### Run Analysis
+
+```bash
 python Analysis/project3_analysis.py
-\end{verbatim}
+```
 
-\section*{Summary}
+---
 
-This repository contains the two app versions, the Google Form response data, and the analysis code used to compare the control and treatment groups. The goal is to determine whether more guided instructional text leads to better user outcomes in a data analysis interface.
+## Summary
+
+This repository contains:
+
+* two experimental app versions
+* user response data collected via Google Forms
+* analysis comparing control vs treatment
+
+**Goal:** determine whether guided instructions improve user outcomes in a data analysis interface.
